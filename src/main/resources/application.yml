@@ -1,0 +1,11 @@
+spring:
+  application:
+  name: "hapi-fhir-demo"
+
+hapi-fhir:
+  server: "https://hapi.fhir.org/baseR4"
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
