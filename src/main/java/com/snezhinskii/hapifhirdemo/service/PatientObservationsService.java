@@ -113,21 +113,23 @@ public class PatientObservationsService {
                 return Collections.emptyList();
             });
 
-        futureObservations.thenAcceptAsync(list -> {
-            if (StringUtils.hasText(csvFilePath)) {
-                final List<List<String>> data = list.stream()
-                    .map(ObservationMapper::mapEntry)
-                    .collect(Collectors.toList());
+        if (StringUtils.hasText(csvFilePath)) {
+            futureObservations.thenAcceptAsync(list -> {
+                    final List<List<String>> data = list.stream()
+                        .map(ObservationMapper::mapEntry)
+                        .collect(Collectors.toList());
 
-                log.debug("CSV data size: {}", data.size());
+                    log.debug("CSV data size: {}", data.size());
 
-                csvWriterService.write(data, csvFilePath);
-            }
-        }, executor)
-        .exceptionally(ex -> {
-            log.warn("CSV Data saving error: {}", ex);
-            return null;
-        });
+                    csvWriterService.write(data, csvFilePath);
+                }, executor)
+                .exceptionally(ex -> {
+                    log.warn("CSV Data saving error: {}", ex);
+                    return null;
+                });
+        } else {
+            log.debug("Skip CSV Data saving because csvFilePath is empty");
+        }
 
         return futureObservations;
     }
