@@ -4,6 +4,8 @@ This project was completed as part of a **Senior Backend Developer (Java)** tech
 
 The task focused on working with **FHIR (Fast Healthcare Interoperability Resources)** — a standard for structuring and exchanging electronic health records (EHR) — using the **HAPI FHIR** library in Java. The objective was to demonstrate backend development skills in a healthcare context, where data interoperability, precision, and adherence to industry standards are essential.
 
+📌 **The most important logic is implemented in** https://github.com/snezhinskiy/hapi-fhir-demo/blob/main/src/main/java/com/snezhinskii/hapifhirdemo/service/PatientObservationsService.java
+
 ---
 
 ### Background Information: Introduction to FHIR and HAPI
